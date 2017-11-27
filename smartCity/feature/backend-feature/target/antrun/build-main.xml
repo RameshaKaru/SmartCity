@@ -4,7 +4,7 @@
   <property name="db.dir" value="target/maven-shared-archive-resources/database"/>
   <property name="userid" value="wso2carbon"/>
   <property name="password" value="wso2carbon"/>
-  <property name="dbURL" value="jdbc:h2:file:/home/rameshakarunasena/Documents/Softwares/wso2iot-3.1.0-N3/samples/smartCity/feature/backend-feature/${db.dir}/floor_analysis;DB_CLOSE_ON_EXIT=FALSE"/>
+  <property name="dbURL" value="jdbc:h2:file:/home/rameshakarunasena/Documents/Softwares/wso2iot-3.1.0-N3/samples/smartCity/feature/backend-feature/${db.dir}/city_analysis;DB_CLOSE_ON_EXIT=FALSE"/>
   <mkdir dir="/home/rameshakarunasena/Documents/Softwares/wso2iot-3.1.0-N3/samples/smartCity/feature/backend-feature/${db.dir}"/>
   <sql password="${password}" autocommit="true" driver="org.h2.Driver" onerror="continue" userid="${userid}" url="${dbURL}">
     <classpath refid="maven.dependency.classpath"/>

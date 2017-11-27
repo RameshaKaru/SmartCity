@@ -50,13 +50,13 @@ import javax.ws.rs.core.Response;
                 title = "",
                 extensions = {
                         @Extension(properties = {
-                                @ExtensionProperty(name = "name", value = "sensemedevice"),
-                                @ExtensionProperty(name = "context", value = "/senseme/device"),
+                                @ExtensionProperty(name = "name", value = "smartCitydevice"),
+                                @ExtensionProperty(name = "context", value = "/smartCity/device"),
                         })
                 }
         ),
         tags = {
-                @Tag(name = "senseme, device_management", description = "")
+                @Tag(name = "smartCity, device_management", description = "")
         }
 )
 @Scopes(
@@ -64,8 +64,8 @@ import javax.ws.rs.core.Response;
                 @Scope(
                         name = "Enroll device",
                         description = "",
-                        key = "perm:senseme:enroll",
-                        permissions = {"/device-mgt/devices/enroll/senseme"}
+                        key = "perm:smartCity:enroll",
+                        permissions = {"/device-mgt/devices/enroll/smartCity"}
                 )
         }
 )
@@ -74,33 +74,6 @@ import javax.ws.rs.core.Response;
 public interface DeviceTypeService {
     String SCOPE = "scope";
 
-    /**
-     * Retrieve Sensor data for the given time period
-     *
-     * @param deviceId unique identifier for given device type instance
-     * @param from     starting time
-     * @param to       ending time
-     * @return response with List<SensorRecord> object which includes sensor data which is requested
-     */
-    @Path("/stats/{deviceId}")
-    @GET
-    @Consumes("application/json")
-    @Produces("application/json")
-    @ApiOperation(
-            consumes = MediaType.APPLICATION_JSON,
-            httpMethod = "GET",
-            value = "Sensor Stats",
-            notes = "",
-            response = Response.class,
-            tags = "senseme",
-            extensions = {
-                    @Extension(properties = {
-                            @ExtensionProperty(name = SCOPE, value = "perm:senseme:enroll")
-                    })
-            }
-    )
-    Response getSensorStats(@PathParam("deviceId") String deviceId, @QueryParam("from") long from,
-                            @QueryParam("to") long to, @QueryParam("sensorType") String sensorType);
 
     /**
      * To download device type agent source code as zip file
@@ -125,27 +98,8 @@ public interface DeviceTypeService {
                     })
             }
     )
-    Response partialEnrollment(SenseMe senseMe, @QueryParam("deviceType") String deviceType);
+    Response partialEnrollment(PlaceDevices placeDevices, @QueryParam("deviceType") String deviceType);
 
-
-
-    @Path("/{deviceId}/test")
-    @POST
-    @ApiOperation(
-            consumes = MediaType.APPLICATION_JSON,
-            httpMethod = "POST",
-            value = "Test device",
-            notes = "",
-            response = Response.class,
-            tags = "senseme",
-            extensions = {
-                    @Extension(properties = {
-                            @ExtensionProperty(name = SCOPE, value = "perm:senseme:enroll")
-                    })
-            }
-    )
-    Response test(@PathParam("deviceId") String deviceId,
-                  @Context HttpServletResponse response);
 
 
     /**
@@ -157,7 +111,7 @@ public interface DeviceTypeService {
     @Path("/enrollme")
     @POST
     @Produces("application/json")
-    Response enrollDevice(@QueryParam("deviceId") String deviceId);
+    Response enrollDevice(@QueryParam("deviceId") String deviceId, @QueryParam("deviceType") String deviceType);
 
 
 }

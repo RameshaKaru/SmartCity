@@ -38,7 +38,7 @@
     {{#if permissions.ADD_BUILDING}}
         <li>
             <!--suppress HtmlUnknownTarget -->
-            <a href="/buildingmonitor/devices" class="cu-btn">
+            <a href="/smartCity/devices" class="cu-btn">
             <span class="icon fw-stack">
                 <i class="fw fw-hardware fw-stack-1x"></i>
                 <i class="fw fw-circle-outline fw-stack-2x"></i>
@@ -53,7 +53,7 @@
                 <i class="fw fw-add fw-stack-1x"></i>
                 <i class="fw fw-circle-outline fw-stack-2x"></i>
             </span>
-                Add Building
+                Add Place
             </a>
         </li>
         <li>
@@ -62,9 +62,19 @@
                 <i class="fw fw-add fw-stack-1x"></i>
                 <i class="fw fw-circle-outline fw-stack-2x"></i>
             </span>
-                Add Location
+                Add Device
             </a>
         </li>
+        <li>
+            <a href="/devicemgt/device-type/add" class="cu-btn">
+            <span class="icon fw-stack">
+                <i class="fw fw-add fw-stack-1x"></i>
+                <i class="fw fw-circle-outline fw-stack-2x"></i>
+            </span>
+                Add Device Type
+            </a>
+        </li>
+
     {{/if}}
 {{/zone}}
 
@@ -83,16 +93,11 @@
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-centered">
                     <form action="" method="post" id="register-form-'+ markerId +'" novalidate="novalidate">
-                        <h3>Add Building</h3>
+                        <h3>Add Place</h3>
                         <div class="form-group">
-                            <label for="locationName">Building Name *</label>
+                            <label for="locationName">Place Name *</label>
                             <input type="text" class="form-control" id="locationName" name="locationName"
-                                   placeholder="e.g.: Home">
-                        </div>
-                        <div class="form-group">
-                            <label for="floors">No. of Floors *</label>
-                            <input type="number" class="form-control required" id="floors" name="floors"
-                                   placeholder="e.g.: Number of floors">
+                                   placeholder="e.g.: Zoo">
                         </div>
                         <div class="form-group">
                             <input type="hidden" class="form-control required" name="lat" id="lat">
@@ -112,10 +117,41 @@
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-centered">
                     <form action="" method="post" id="register-form-'+ markerId +'" novalidate="novalidate">
-                        <h3>Add Location</h3>
+                        <h3>Add Device</h3>
                         <div class="form-group">
                             <input type="hidden" class="form-control required" name="lat" id="lat">
                             <input type="hidden" class="form-control required" name="long" id="long">
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceId">Device Type *</label>
+                            <input type="text" class="form-control" id="deviceType" name="deviceType" >
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceId">Device Claim Id *</label>
+                            <input type="text" class="form-control" id="deviceId" name="deviceId" >
+                        </div>
+                        <div id="device-button" class="form-group">
+                            <button id="enrolldevice" type="button" class="btn btn-primary" onclick="saveLocation()"
+                                    data-toggle="update-data">Add Device
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="deviceType-response-template" style="display: none">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-centered">
+                    <form action="" method="post" id="register-form-'+ markerId +'" novalidate="novalidate">
+                        <h3>Add Device Type</h3>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control required" name="lat" id="lat">
+                            <input type="hidden" class="form-control required" name="long" id="long">
+                        </div>
+                        <div class="form-group">
+                            <label for="deviceId">Device Type *</label>
+                            <input type="text" class="form-control" id="deviceType" name="deviceType" >
                         </div>
                         <div class="form-group">
                             <label for="deviceId">Device Claim Id *</label>
@@ -146,7 +182,7 @@
             <div class="sidebar-content hidden">
                 <div class="sidebar-pane" id="home">
                     <h1 class="sidebar-header">
-                        Manage Buildings/ Locations
+                        Manage Device Types
                         <span class="sidebar-close"><i class="fa fa-caret-right"></i></span>
                     </h1>
                 </div>
@@ -178,7 +214,7 @@
             <span class="icon fw-stack">
                 <i class="fw fw-menu fw-stack-1x"></i>
             </span>
-                        <span class="hidden-xs">Manage Buildings/ Locations</span>
+                        <span class="hidden-xs">Manage Device Types</span>
                         <span class="badge notifications" id="notification-bubble"></span>
                     </a>
                 </li>

@@ -26,13 +26,12 @@ import java.io.File;
  * stream definition and device specific dome constants
  */
 public class DeviceTypeConstants {
-    public final static String DEVICE_TYPE = "senseme";
 
     public final static String FLOOR_GROUP_NAME = "BUILDING-%s-FLOOR-%s";
-    public final static String BUILDING_ID = "buildingId";
-    public final static String FLOOR_ID = "floorId";
+    public final static String PLACE_ID = "placeId";
     public final static String X_COORDINATE = "xCoordinate";
     public final static String Y_COORDINATE = "yCoordinate";
+    public final static String DEVICE_TYPE= "deviceType";
 
     public static final String MOTION_EVENT_TABLE = "DEVICE_MOTION_SUMMARY";
     public static final String LIGHT_EVENT_TABLE = "DEVICE_LIGHT_SUMMARY";

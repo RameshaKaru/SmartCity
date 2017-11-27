@@ -249,7 +249,7 @@ public class PlaceServiceImpl implements PlaceService {
 
         boolean status;
         try {
-            String placeGroupName = String.format(DeviceTypeConstants.PLACE_GROUP_NAME, placeInfo.getPlaceId());
+            String placeGroupName = String.format(DeviceTypeConstants.PLACE_GROUP_NAME, placeId);
             GroupManagementProviderService groupManagementProviderService = APIUtil.getGroupManagementProviderService();
             List<DeviceGroup> userGroups = groupManagementProviderService
                     .getGroups(PrivilegedCarbonContext.getThreadLocalCarbonContext().getUsername()) ;
@@ -262,14 +262,14 @@ public class PlaceServiceImpl implements PlaceService {
                 placeDAOManager.getPlaceDAOHandler().commitTransaction();
 
                 if (status) {
-                    return Response.status(Response.Status.OK).entity(place).build();
+                    return Response.status(Response.Status.OK.getStatusCode()).build();
                 } else {
                     return Response.status(Response.Status.NOT_FOUND).entity("Relevant Place with the id " +
-                            placeInfo.getPlaceId() + " is not found.").build();
+                            placeId + " is not found.").build();
                 }
             } else {
                 return Response.status(Response.Status.UNAUTHORIZED).entity("Unauthorized to view group " +
-                        placeGroupName + " for Place " + placeInfo.getPlaceId()).build();
+                        placeGroupName + " for Place " + placeId).build();
             }
         } catch (IOException e) {
             log.error("Error occured while adding image " + placeId, e);
@@ -278,8 +278,7 @@ public class PlaceServiceImpl implements PlaceService {
             placeDAOManager.getPlaceDAOHandler().rollbackTransaction();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         } catch (GroupManagementException e) {
-            log.error("Error checking group level authorizations for updating the Place " + placeInfo
-                    .getPlaceId(), e);
+            log.error("Error checking group level authorizations for updating the Place " + placeId, e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getCause()).build();
 
         } finally {
@@ -488,10 +487,6 @@ public class PlaceServiceImpl implements PlaceService {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(e.getMessage())
                     .build();
         } catch (DeviceManagementException e) {
-            log.error(e.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(e.getMessage())
-                    .build();
-        } catch (SQLException e) {
             log.error(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(e.getMessage())
                     .build();

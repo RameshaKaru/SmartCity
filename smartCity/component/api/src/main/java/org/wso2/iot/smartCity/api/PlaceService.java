@@ -24,8 +24,6 @@ import org.wso2.carbon.apimgt.annotations.api.Scope;
 import org.wso2.carbon.apimgt.annotations.api.Scopes;
 import org.wso2.iot.smartCity.api.dto.AlertMessage;
 import org.wso2.iot.smartCity.api.dto.PlaceInfo;
-import org.wso2.iot.smartCity.api.dto.FloorInfo;
-import org.wso2.iot.smartCity.api.dto.QueryObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
