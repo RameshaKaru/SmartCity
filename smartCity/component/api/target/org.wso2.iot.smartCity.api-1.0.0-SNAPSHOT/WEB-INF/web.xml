@@ -49,6 +49,6 @@
     </context-param>
 	<context-param>
 		<param-name>nonSecuredEndPoints</param-name>
-		<param-value>/senseme/device/enrollme</param-value>
+		<param-value>/smartCity/device/enrollme</param-value>
 	</context-param>
 </web-app>

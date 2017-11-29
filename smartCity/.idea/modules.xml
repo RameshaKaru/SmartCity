@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/component/api/org.wso2.iot.senseme.api.iml" filepath="$PROJECT_DIR$/component/api/org.wso2.iot.senseme.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/component/analytics/org.wso2.iot.smartCity.analytics.iml" filepath="$PROJECT_DIR$/component/analytics/org.wso2.iot.smartCity.analytics.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature/analytics-feature/org.wso2.iot.smartCity.analytics.feature.iml" filepath="$PROJECT_DIR$/feature/analytics-feature/org.wso2.iot.smartCity.analytics.feature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/component/api/org.wso2.iot.smartCity.api.iml" filepath="$PROJECT_DIR$/component/api/org.wso2.iot.smartCity.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature/backend-feature/org.wso2.iot.smartCity.backend.feature.iml" filepath="$PROJECT_DIR$/feature/backend-feature/org.wso2.iot.smartCity.backend.feature.iml" />
       <module fileurl="file://$PROJECT_DIR$/component/ui/org.wso2.iot.smartCity.ui.iml" filepath="$PROJECT_DIR$/component/ui/org.wso2.iot.smartCity.ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature/ui-feature/org.wso2.iot.smartCity.ui.feature.iml" filepath="$PROJECT_DIR$/feature/ui-feature/org.wso2.iot.smartCity.ui.feature.iml" />

@@ -203,7 +203,7 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    @Path("/{placeId}")
+    @Path("/{placeId}/getPlan")
     @GET
     @Produces("image/*")
     public Response getPlacePlan(@PathParam("placeId") int placeId) {
@@ -240,7 +240,7 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @POST
-    @Path("/{placeId}")
+    @Path("/{placeId}/addPlan")
     @Consumes("multipart/form-data")
     @Produces("application/json")
     @Override
@@ -288,7 +288,7 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Path("/test")
     @GET
-    @Produces("application/text")
+    @Produces("application/json")
     @Override
     public Response test() {
         try {
@@ -352,9 +352,11 @@ public class PlaceServiceImpl implements PlaceService {
             PlaceInfo placeInfo = this.placeDAO.getPlace(placeId);
 
             if (placeInfo != null) {
-                return Response.status(Response.Status.OK).build();
+                String msg= "Place exists";
+                return Response.status(Response.Status.OK).entity(msg).build();
             } else {
-                return Response.status(Response.Status.NOT_FOUND).build();
+                String msg= "Place does not exist";
+                return Response.status(Response.Status.NOT_FOUND).entity(msg).build();
             }
         } catch (SQLException e) {
             log.error("Error occured while checking whether a place with the id " + placeId + " exist.", e);

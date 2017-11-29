@@ -23,13 +23,13 @@
        xsi:schemaLocation="
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
          http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
-    <jaxrs:server id="senseme" address="/">
+    <jaxrs:server id="smartCity" address="/">
         <jaxrs:serviceBeans>
             <bean id="DeviceTypeService"
-                  class="org.wso2.iot.senseme.api.DeviceTypeServiceImpl">
+                  class="org.wso2.iot.smartCity.api.DeviceTypeServiceImpl">
             </bean>
-            <bean id="BuildingService"
-                  class="org.wso2.iot.senseme.api.BuildingServiceImpl">
+            <bean id="PlaceService"
+                  class="org.wso2.iot.smartCity.api.PlaceServiceImpl">
             </bean>
         </jaxrs:serviceBeans>
         <jaxrs:providers>

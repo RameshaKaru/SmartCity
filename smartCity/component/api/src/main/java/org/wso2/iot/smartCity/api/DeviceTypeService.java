@@ -91,10 +91,10 @@ public interface DeviceTypeService {
             value = "Download agent",
             notes = "",
             response = Response.class,
-            tags = "senseme",
+            tags = "smartCity",
             extensions = {
                     @Extension(properties = {
-                            @ExtensionProperty(name = SCOPE, value = "perm:senseme:enroll")
+                            @ExtensionProperty(name = SCOPE, value = "perm:smartCity:enroll")
                     })
             }
     )

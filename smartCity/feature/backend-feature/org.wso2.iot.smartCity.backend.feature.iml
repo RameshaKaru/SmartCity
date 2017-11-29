@@ -9,7 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="org.wso2.iot.senseme.api" />
+    <orderEntry type="module" module-name="org.wso2.iot.smartCity.api" />
     <orderEntry type="library" name="Maven: com.h2database.wso2:h2-database-engine:1.2.140.wso2v3" level="project" />
   </component>
 </module>

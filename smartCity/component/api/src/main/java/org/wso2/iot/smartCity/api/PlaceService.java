@@ -94,7 +94,7 @@ public interface PlaceService {
     @ApiOperation(
             consumes = MediaType.APPLICATION_JSON,
             httpMethod = "POST",
-            value = "Download agent",
+            value = "Add place",
             notes = "",
             response = Response.class,
             tags = "smartCity",
@@ -133,7 +133,7 @@ public interface PlaceService {
      * @return response
      */
 
-    @Path("/{placeId}")
+    @Path("/{placeId}/addPlan")
     @POST
     @Consumes("multipart/form-data")
     @Produces("application/json")
@@ -171,7 +171,7 @@ public interface PlaceService {
     Response test();
 
 
-    @Path("/{placeId}")
+    @Path("/{placeId}/getPlan")
     @GET
     @Produces("image/*")
     @ApiOperation(
