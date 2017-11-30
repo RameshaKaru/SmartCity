@@ -27,7 +27,7 @@ function onRequest() {
     viewModel.permissions = permissions;
 
 
-    if (!permissions.ADD_BUILDING && !permissions.VIEW_BUILDING) {
+    if (!permissions.ADD_PLACE && !permissions.VIEW_PLACE) {
         viewModel.permittednone = true;
     }
 

@@ -583,23 +583,17 @@ var userModule = function () {
         if (publicMethods.isAuthorized("/permission/admin/device-mgt/platform-configs/view")) {
             permissions["TENANT_CONFIGURATION"] = true;
         }
-        if (publicMethods.isAuthorized("/permission/admin/buildingmonitor/building/add")) {
-            permissions["ADD_BUILDING"] = true;
+        if (publicMethods.isAuthorized("/permission/admin/smartCity/place/add")) {
+            permissions["ADD_PLACE"] = true;
         }
-        if (publicMethods.isAuthorized("/permission/admin/buildingmonitor/building/view")) {
-            permissions["VIEW_BUILDING"] = true;
-        }
-        if (publicMethods.isAuthorized("/permission/admin/buildingmonitor/building/floor/add")) {
-            permissions["ADD_FLOOR"] = true;
-        }
-        if (publicMethods.isAuthorized("/permission/admin/buildingmonitor/building/floor/view")) {
-            permissions["VIEW_FLOOR"] = true;
+        if (publicMethods.isAuthorized("/permission/admin/smartCity/place/view")) {
+            permissions["VIEW_PLACE"] = true;
         }
         if (publicMethods.isAuthorized("permission/admin/device-mgt/devices/owning-device/view")) {
             permissions["OWNING_DEVICE"] = true;
         }
-        if (publicMethods.isAuthorized("permission/admin/device-mgt/devices/enroll/senseme")) {
-            permissions["SENSEME_ENROLLMENT"] = true;
+        if (publicMethods.isAuthorized("permission/admin/device-mgt/devices/enroll/smartCity")) {
+            permissions["SMARTCITY_ENROLLMENT"] = true;
         }
 
         return permissions;

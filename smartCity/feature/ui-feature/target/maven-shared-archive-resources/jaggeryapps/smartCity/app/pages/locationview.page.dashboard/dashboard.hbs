@@ -35,17 +35,7 @@
 {{/zone}}
 
 {{#zone "navbarActions"}}
-    {{#if permissions.ADD_BUILDING}}
-        <li>
-            <!--suppress HtmlUnknownTarget -->
-            <a href="/smartCity/devices" class="cu-btn">
-            <span class="icon fw-stack">
-                <i class="fw fw-hardware fw-stack-1x"></i>
-                <i class="fw fw-circle-outline fw-stack-2x"></i>
-            </span>
-                Devices
-            </a>
-        </li>
+    {{#if permissions.ADD_PLACE}}
         <li>
             <!--suppress HtmlUnknownTarget -->
             <a href="#" class="cu-btn" onclick="onAddMarker()">
@@ -87,7 +77,7 @@
     {{/zone}}
 {{else}}
     {{#zone "body"}}
-        <div id="device-location" {{#if permissions.ADD_BUILDING}}add-building = true{{/if}}></div>
+        <div id="device-location" {{#if permissions.ADD_PLACE}}add-place = true{{/if}}></div>
 
         <div id="building-response-template" style="display: none">
             <div class="row">
@@ -105,7 +95,7 @@
                         </div>
                         <div id="building-button" class="form-group">
                             <button id="buttonme" type="button" class="btn btn-primary" data-toggle="update-data"
-                                    onclick="saveBuilding()">Save
+                                    onclick="savePlace()">Save
                             </button>
                         </div>
                     </form>
@@ -131,34 +121,7 @@
                             <input type="text" class="form-control" id="deviceId" name="deviceId" >
                         </div>
                         <div id="device-button" class="form-group">
-                            <button id="enrolldevice" type="button" class="btn btn-primary" onclick="saveLocation()"
-                                    data-toggle="update-data">Add Device
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div id="deviceType-response-template" style="display: none">
-            <div class="row">
-                <div class="col-lg-5 col-md-6 col-centered">
-                    <form action="" method="post" id="register-form-'+ markerId +'" novalidate="novalidate">
-                        <h3>Add Device Type</h3>
-                        <div class="form-group">
-                            <input type="hidden" class="form-control required" name="lat" id="lat">
-                            <input type="hidden" class="form-control required" name="long" id="long">
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceId">Device Type *</label>
-                            <input type="text" class="form-control" id="deviceType" name="deviceType" >
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceId">Device Claim Id *</label>
-                            <input type="text" class="form-control" id="deviceId" name="deviceId" >
-                        </div>
-                        <div id="device-button" class="form-group">
-                            <button id="enrolldevice" type="button" class="btn btn-primary" onclick="saveLocation()"
+                            <button id="enrolldevice" type="button" class="btn btn-primary" onclick="saveDevice()"
                                     data-toggle="update-data">Add Device
                             </button>
                         </div>
@@ -171,7 +134,7 @@
             <!-- Nav tabs -->
             <div class="sidebar-tabs hidden">
                 <ul role="tablist">
-                    <li><a href="#home" role="tab" title="View buildings"><i class="fw fw-enterprise"></i></a></li>
+                    <li><a href="#home" role="tab" title="View places"><i class="fw fw-enterprise"></i></a></li>
                     <!--<li><a href="#info" role="tab"><i class="fa fa-info-circle"></i></a></li>-->
                     <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
                 </ul>
@@ -205,7 +168,7 @@
 
 
     {{#zone "navbarCollapsableRightItems"}}
-        {{#if permissions.VIEW_BUILDING}}
+        {{#if permissions.VIEW_PLACE}}
             <ul id="notification-bubble-wrapper" class="nav navbar-nav navbar-right">
                 <li class="visible-inline-block  active">
                     <!--<a href="{{@app.context}}notification-listing" title="Failures of operations on the device side will be listed here">-->
@@ -224,7 +187,7 @@
     {{/zone}}
 
     {{#zone "sidePanes"}}
-        {{#if permissions.VIEW_BUILDING}}
+        {{#if permissions.VIEW_PLACE}}
             <div class="sidebar-wrapper sidebar-wrapper-animation-fix toggled" id="right-sidebar"
                  data-side="right" data-width="350" data-sidebar-fixed="true" data-top="90" data-fixed-offset="90"
                  data-offset-top="50" data-spy="affix">

@@ -109,11 +109,11 @@ function loadLeafletMap() {
     }, 400);
 
     preLoadDevices();
-    preLoadBuildings();
+    preLoadPlaces();
 }
 
 function preLoadDevices() {
-    var getDevicesApi = "/senseme/building/0/0/devices";
+    var getDevicesApi = "/smartCity/place/0/devices";
     invokerUtil.get(getDevicesApi, function (data, textStatus, jqXHR) {
         if (jqXHR.status == 200) {
             var devices = JSON.parse(data);
@@ -133,21 +133,21 @@ function preLoadDevices() {
     }, "application/json");
 }
 
-function preLoadBuildings() {
-    var getBuildingDevicesApi = "/senseme/building/devices";
+function preLoadPlaces() {
+    var getPlaceDevicesApi = "/smartCity/place/devices";
     var devices = {};
-    invokerUtil.get(getBuildingDevicesApi, function (data, textStatus, jqXHR) {
+    invokerUtil.get(getPlaceDevicesApi, function (data, textStatus, jqXHR) {
         var status = jqXHR.status;
         console.log("status "  +status);
         if (status >= 200 && status < 300) {
             if (status == 200) {
                 devices = JSON.parse(data);
             }
-            var getBuildingApi = "/senseme/building";
-            invokerUtil.get(getBuildingApi, function (data, textStatus, jqXHR) {
+            var getPlaceApi = "/smartCity/place";
+            invokerUtil.get(getPlaceApi, function (data, textStatus, jqXHR) {
                 console.log("here ///");
                 if (jqXHR.status == 200) {
-                    //[{"buildingId":1,"buildingName":"ayyoobs1","owner":"admin","longitude":"79.97607422294095","latitude":"6.995539474716988","numFloors":4}
+
                     var buildings = JSON.parse(data);
                     var buildingIds;
                     if (buildings.length > 0) {
@@ -179,7 +179,7 @@ function preLoadBuildings() {
                                     for(var j = 0; j < devices.length; j++) {
                                         if (devices[j].id == obj.buildingId) {
                                             var deviceobj = devices[j];
-                                            //[{"id":"9","activeDevices":0,"faultDevices":0,"inactiveDevices":4,"totalDevices":4}]
+
                                             var alert = buildingAlertCount[obj.buildingId];
                                             if (!alert && alert== undefined) {
                                                 alert = 0;

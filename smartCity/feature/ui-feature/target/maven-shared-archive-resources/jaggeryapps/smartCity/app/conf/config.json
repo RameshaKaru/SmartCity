@@ -1,5 +1,5 @@
 {
-  "appContext": "/buildingmonitor/",
+  "appContext": "/smartCity/",
   "httpsURL": "https://%iot.gateway.host%:%iot.gateway.https.port%",
   "httpURL": "http://%iot.gateway.host%:%iot.gateway.http.port%",
   "wssURL": "wss://%iot.analytics.host%:%iot.analytics.https.port%",
@@ -10,7 +10,7 @@
   "oauthProvider": {
     "appRegistration": {
       "appType": "webapp",
-      "clientName": "buildingmonitor",
+      "clientName": "smartCity",
       "owner": "admin@carbon.super",
       "dynamicClientAppRegistrationServiceURL": "%https.ip%/dynamic-client-web/register",
       "apiManagerClientAppRegistrationServiceURL": "https://%iot.gateway.host%:%iot.gateway.https.port%/api-application-registration/register/tenants",
@@ -171,37 +171,14 @@
     "perm:ios:wipe-data",
     "perm:admin",
     "perm:devicetype:deployment",
-    "perm:senseme:enroll",
-    "perm:building:add",
-    "perm:building:view",
-    "perm:floor:add",
-    "perm:floor:view",
-    "perm:building:remove"
+    "perm:smartCity:enroll",
+    "perm:place:add",
+    "perm:place:view",
+    "perm:place:remove"
   ],
   "isOAuthEnabled": true,
   "backendRestEndpoints": {
     "deviceMgt": "/api/device-mgt/v1.0"
-  },
-  "Sensors" : {
-    "light": {
-      "min": 1024,
-      "max": 0,
-      "decimal" : 0
-    },
-    "temperature" : {
-      "min": 1500,
-      "max": 3500,
-      "decimal" : 2
-    },
-    "motion":{
-      "min": 0,
-      "max": 10000,
-      "decimal" : 4
-    },
-    "humidity":{
-      "min": 0,
-      "max": 100,
-      "decimal" : 0
-    }
   }
+
 }

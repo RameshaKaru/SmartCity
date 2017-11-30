@@ -33,7 +33,7 @@ if (uriMatcher.match("/{context}/api/floor/{buildingId}/{floorId}")) {
     var contentType = request.getHeader(constants.CONTENT_TYPE_IDENTIFIER);
     requestHeaders.push({"name": constants.CONTENT_TYPE_IDENTIFIER, "value" : contentType});
     var elements = uriMatcher.elements();
-    var requestURL = "/senseme/building/" + elements.buildingId+ "/" + elements.floorId;
+    var requestURL = "/smartCity/place/" + elements.placeId;
     var requestPayload = uploadedFile;
 
     var restAPIEndpoint = devicemgtProps["httpsURL"] + requestURL;
@@ -42,12 +42,10 @@ if (uriMatcher.match("/{context}/api/floor/{buildingId}/{floorId}")) {
             restAPIEndpoint,
             requestPayload,
             function (httpMethod) {
-                response.sendRedirect("/buildingmonitor/floor?buildingId=" + elements.buildingId + "&floorId=" +
-                    elements.floorId);
+                response.sendRedirect("/smartCity/place?placeId=" + elements.placeId );
             },
             function (httpMethod) {
-                response.sendRedirect("/buildingmonitor/floor?buildingId=" + elements.buildingId + "&floorId=" +
-                    elements.floorId + "&errorMessage=[" + response['status'] + "]-" + response['statusText']);
+                response.sendRedirect("/smartCity/place?placeId=" + elements.placeId + "&errorMessage=[" + response['status'] + "]-" + response['statusText']);
             },requestHeaders
         );
     } catch (e) {
